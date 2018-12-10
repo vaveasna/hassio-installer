@@ -11,7 +11,7 @@ This script will install all [requirements][requirements], and then install
 
 ## Installation Instructions
 
-1. Flash the latest [ARMBIAN] image.
+1. Flash the latest ARMBIAN stretch image.
 1. Run this as root user:
 
 ```bash
