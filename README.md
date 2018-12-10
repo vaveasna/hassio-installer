@@ -6,7 +6,7 @@ This script will install all [requirements][requirements], and then install
 
 ## Requirements
 
-- [S905 TV BOX running ARMBIAN]
+- S905 TV BOX running ARMBIAN
 - [Raspbian Stretch Lite][stretch-lite]
 
 ## Installation Instructions
