@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-###########################################################
-###########################################################
-##                                                       ##
-## THIS SCRIPT SHOULD ONLY BE RUN ON A RASPBERRY PI 3 B+ ##
-##                                                       ##
-###########################################################
-###########################################################
+##################################################################
+##################################################################
+##                                                              ##
+## THIS SCRIPT SHOULD ONLY BE RUN ON A S905 BOX RUNNING ARMBIAN ##
+##                                                              ##
+##################################################################
+##################################################################
 set -o errexit  # Exit script when a command exits with non-zero status
 set -o errtrace # Exit on error inside any functions or sub-shells
 set -o nounset  # Exit script on use of an undefined variable
@@ -70,7 +70,7 @@ install_docker() {
 # ------------------------------------------------------------------------------
 install_hassio() {
   echo "Installing Hass.io..."
-  curl -sL "${HASSIO_INSTALLER}" | bash -s -- -m raspberrypi3
+  curl -sL "${HASSIO_INSTALLER}" | bash -s -- -m qemuarm-64
 }
 
 # ------------------------------------------------------------------------------
