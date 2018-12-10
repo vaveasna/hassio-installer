@@ -5,7 +5,7 @@ dist: trusty
 sudo: required
 
 script:
-  - shellcheck hassio_rpi3bp
+  - shellcheck hassio_s905armbian
 
 notifications:
   email: false
