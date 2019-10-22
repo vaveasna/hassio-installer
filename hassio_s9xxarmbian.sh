@@ -52,7 +52,6 @@ update_hostname() {
 install_requirements() {
   echo "Updating APT packages list..."
   apt-get install software-properties-common
-  add-apt-repository universe
   apt-get update
 
   echo "Ensure all requirements are installed..."
