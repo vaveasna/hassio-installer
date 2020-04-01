@@ -15,7 +15,7 @@ set -o pipefail # Return exit status of the last command in the pipe that failed
 # GLOBALS
 # ==============================================================================
 readonly HOSTNAME="hassio"
-readonly HASSIO_INSTALLER="https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh"
+readonly HA_INSTALLER="https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh"
 readonly REQUIREMENTS=(
   apparmor-utils
   apt-transport-https
@@ -70,7 +70,7 @@ install_docker() {
 # ------------------------------------------------------------------------------
 install_hassio() {
   echo "Installing Hass.io..."
-  curl -sL "${HASSIO_INSTALLER}" | bash -s -- -m qemux86-64
+  curl -sL "${HA_INSTALLER}" | bash -s -- -m qemux86-64
 }
 
 # ------------------------------------------------------------------------------
