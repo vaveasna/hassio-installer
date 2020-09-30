@@ -15,7 +15,7 @@ set -o pipefail # Return exit status of the last command in the pipe that failed
 # GLOBALS
 # ==============================================================================
 readonly HOSTNAME="armhassio"
-readonly HA_INSTALLER="https://raw.githubusercontent.com/MadDoct/supervised-installer/master/installer.sh"
+readonly HA_INSTALLER="https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh"
 readonly REQUIREMENTS=(
   apparmor-utils
   apt-transport-https
