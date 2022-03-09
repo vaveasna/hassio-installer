@@ -15,7 +15,6 @@ set -o pipefail # Return exit status of the last command in the pipe that failed
 # GLOBALS
 # ==============================================================================
 readonly HOSTNAME="armhassio"
-readonly HA_INSTALLER="https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh"
 readonly REQUIREMENTS=(
   apparmor-utils
   apt-transport-https
@@ -71,7 +70,11 @@ install_docker() {
 # ------------------------------------------------------------------------------
 install_hassio() {
   echo "Installing Hass.io..."
-  curl -sL "${HA_INSTALLER}" | bash -s -- -m qemuarm-64
+  wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+  dpkg -i homeassistant-supervised.deb
+  sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+
+
 }
 
 # ------------------------------------------------------------------------------
