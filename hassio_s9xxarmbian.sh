@@ -121,7 +121,7 @@ main() {
   echo "http://${HOSTNAME}.local:8123/ in your browser and wait"
   echo "for Home Assistant to load."
   echo "If the previous URL does not work, please try http://${ip_addr}:8123/"
-
+  journalctl -f
   exit 0
 }
 main
