@@ -50,6 +50,11 @@ update_hostname() {
 # ------------------------------------------------------------------------------
 install_requirements() {
   echo "Updating APT packages list..."
+  apt-get clean
+  rm -rf /var/lib/apt/lists/*
+  apt-get clean
+  apt-get update 
+  apt-get upgrade
   apt-get install software-properties-common
   apt-get update
 
