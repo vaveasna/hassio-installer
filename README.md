@@ -1,8 +1,5 @@
 # Hass.io Installer for S9xx box running Armbian (not for S905X2)
 
-This script is largely based on Dale Higgs' <@dale3h> work. (almost a total copy, just changing the architecture)
-This script will install all [requirements][requirements], and then install
-[Hass.io][hass-io]. Please report any [issues][issues] that experience.
 
 ## Requirements
 
