@@ -6,6 +6,8 @@
 ##                                                               ##
 ###################################################################
 ###################################################################
+
+
 set -o errexit  # Exit script when a command exits with non-zero status
 set -o errtrace # Exit on error inside any functions or sub-shells
 set -o nounset  # Exit script on use of an undefined variable
@@ -14,7 +16,7 @@ set -o pipefail # Return exit status of the last command in the pipe that failed
 # ==============================================================================
 # GLOBALS
 # ==============================================================================
-readonly HOSTNAME="armhassio"
+readonly HOSTNAME="TV4YOU"
 readonly REQUIREMENTS=(
   apparmor-utils
   apt-transport-https
@@ -26,7 +28,11 @@ readonly REQUIREMENTS=(
   network-manager
   socat
   software-properties-common
+  udisks2 
+  wget
 )
+
+
 
 # ==============================================================================
 # SCRIPT LOGIC
@@ -60,6 +66,8 @@ install_requirements() {
 
   echo "Ensure all requirements are installed..."
   apt-get install -y "${REQUIREMENTS[@]}"
+  
+  
 }
 
 # ------------------------------------------------------------------------------
