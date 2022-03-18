@@ -32,11 +32,33 @@ readonly REQUIREMENTS=(
   wget
 )
 
+os_agent_version=("1.2.2")
+
 
 
 # ==============================================================================
 # SCRIPT LOGIC
 # ==============================================================================
+
+
+
+
+# ------------------------------------------------------------------------------
+# Installs the os-agent 
+# ------------------------------------------------------------------------------
+install_os-agent() {
+  echo "Installing os-agent V${os_agent_version}..."
+  wget -c https://github.com/home-assistant/os-agent/releases/download/${os_agent_version}/os-agent_${os_agent_version}_linux_aarch64.deb
+
+  wget -c https://github.com/home-assistant/os-agent/releases/download/${os_agent_version}/os-agent_${os_agent_version}_linux_aarch64.deb
+
+  dpkg -i os-agent_${os_agent_version}_linux_aarch64.deb
+
+
+}
+
+
+
 
 # ------------------------------------------------------------------------------
 # Ensures the hostname of the Pi is correct.
@@ -69,6 +91,8 @@ install_requirements() {
   
   
 }
+
+
 
 # ------------------------------------------------------------------------------
 # Installs the Docker engine
@@ -117,6 +141,7 @@ main() {
   # Install ALL THE THINGS!
   update_hostname
   install_requirements
+  install_os-agent
   config_network_manager
   install_docker
   install_hassio
