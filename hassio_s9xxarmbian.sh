@@ -47,8 +47,9 @@ os_agent_version=("1.2.2")
 # Installs the os-agent 
 # ------------------------------------------------------------------------------
 install_os-agent() {
+  echo "# ------------------------------------------------------------------------------"
   echo "Installing os-agent V${os_agent_version}..."
-  wget -c https://github.com/home-assistant/os-agent/releases/download/${os_agent_version}/os-agent_${os_agent_version}_linux_aarch64.deb
+  echo "# ------------------------------------------------------------------------------"
 
   wget -c https://github.com/home-assistant/os-agent/releases/download/${os_agent_version}/os-agent_${os_agent_version}_linux_aarch64.deb
 
@@ -77,18 +78,23 @@ update_hostname() {
 # Installs all required software packages and tools
 # ------------------------------------------------------------------------------
 install_requirements() {
+  echo "# ------------------------------------------------------------------------------"
   echo "Updating APT packages list..."
+  echo "# ------------------------------------------------------------------------------"
   apt-get clean
   rm -rf /var/lib/apt/lists/*
   apt-get clean
+  apt --fix-broken install -Y
   apt-get update 
   apt-get upgrade
   apt-get install software-properties-common
   apt-get update
-
+  echo "# ------------------------------------------------------------------------------"
   echo "Ensure all requirements are installed..."
+  echo "# ------------------------------------------------------------------------------"
+ 
   apt-get install -y "${REQUIREMENTS[@]}"
-  
+ 
   
 }
 
