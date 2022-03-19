@@ -86,7 +86,7 @@ install_requirements() {
   apt-get clean
   rm -rf /var/lib/apt/lists/*
   apt-get clean
-  apt --fix-broken install -Y
+  apt --fix-broken install -y
   apt-get update 
   apt-get upgrade
   apt-get install software-properties-common
