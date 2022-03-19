@@ -8,10 +8,10 @@
 ###################################################################
 
 
-#set -o errexit  # Exit script when a command exits with non-zero status
-#set -o errtrace # Exit on error inside any functions or sub-shells
-#set -o nounset  # Exit script on use of an undefined variable
-#set -o pipefail # Return exit status of the last command in the pipe that failed
+set -o errexit  # Exit script when a command exits with non-zero status
+set -o errtrace # Exit on error inside any functions or sub-shells
+set -o nounset  # Exit script on use of an undefined variable
+set -o pipefail # Return exit status of the last command in the pipe that failed
 
 # ==============================================================================
 # GLOBALS
@@ -32,23 +32,7 @@ readonly REQUIREMENTS=(
   wget
 )
 
-os_agent_version="";
-
-# Set model list, begin ------------
- ARCHITECTURE_MODEL_LIST="
-  # 1.architecture  
-  386.tar.gz
-  aarch64.deb
-  amd64.tar.gz
-  arm64.tar.gz
-  armv5.deb
-  armv5.tar.gz
-  armv7.deb
-  armv7.tar.gz
-  i386.deb
-  x86_64.deb
-  "
-
+os_agent_version="1.2.2";
 
 # ==============================================================================
 # SCRIPT LOGIC
@@ -56,35 +40,11 @@ os_agent_version="";
 
 
 
-search_architecture_model() {
-    local search_soc_id="${1}"
-    local ret_count=$(echo "${ARCHITECTURE_MODEL_LIST}" | grep -E "^${search_soc_id}:" | wc -l)
-    if [ "${ret_count}" -eq "1" ]; then
-        echo "${ARCHITECTURE_MODEL_LIST}" | grep -E "^${search_soc_id}:" | sed -e 's/NA//g' -e 's/NULL//g' -e 's/[ ][ ]*//g'
-    fi
-}
-
 
 # ------------------------------------------------------------------------------
 # Installs the os-agent 
 # ------------------------------------------------------------------------------
 install_os-agent() {
-
-
-  
-
-
-  read -p "Please Input architecture: " boxtype
-
-  ret=$(search_aml_model "${boxtype}")
-  if [ "${ret}" == "" ]; then
-      echo "Input error, exit!"
-      exit 1
-  fi
-
-  os_agent_version=$(echo "${ret}" | awk -F ':' '{print $1}')
-  
-  exit 1
 
   echo "# ------------------------------------------------------------------------------"
   echo "Installing os-agent V${os_agent_version}..."
