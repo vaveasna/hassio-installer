@@ -34,50 +34,50 @@ readonly REQUIREMENTS=(
 
 os_agent_version="1.2.2"
 
-#
-## ==============================================================================
-## SCRIPT LOGIC
-## ==============================================================================
-#
-#
-## ==============================================================================
-## Are we root?
-## ==============================================================================
-#if [[ $EUID -ne 0 ]]; then
-#  echo "This script must be run as root."
-#  echo "Please try again after running:"
-#  echo "  sudo su"
-#  exit 1
-#fi
-#
-## ------------------------------------------------------------------------------
-## Ensures the hostname of the Pi is correct.
-## ------------------------------------------------------------------------------
-#old_hostname=$(< /etc/hostname)
-#if [[ "${old_hostname}" != "${HOSTNAME}" ]]; then
-#  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hostname./
-#  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hosts
-#  hostname "${HOSTNAME}"
-#  echo "Hostname will be changed on next reboot: ${HOSTNAME}"
-#fi
-#
-#
-#echo "# ------------------------------------------------------------------------------"
-#echo "Updating APT packages list..."
-#echo "# ------------------------------------------------------------------------------"
-#apt-get clean
-#rm -rf /var/lib/apt/lists/*
-#apt-get clean
-#apt --fix-broken install -y
-#apt-get update 
-#apt-get upgrade
-#apt-get install software-properties-common
-#apt-get update
-#
-#echo "# ------------------------------------------------------------------------------"
-#echo "Ensure all requirements are installed..."
-#echo "# ------------------------------------------------------------------------------"
-#apt-get install -y "${REQUIREMENTS[@]}"
+
+# ==============================================================================
+# SCRIPT LOGIC
+# ==============================================================================
+
+
+# ==============================================================================
+# Are we root?
+# ==============================================================================
+if [[ $EUID -ne 0 ]]; then
+  echo "This script must be run as root."
+  echo "Please try again after running:"
+  echo "  sudo su"
+  exit 1
+fi
+
+# ------------------------------------------------------------------------------
+# Ensures the hostname of the Pi is correct.
+# ------------------------------------------------------------------------------
+old_hostname=$(< /etc/hostname)
+if [[ "${old_hostname}" != "${HOSTNAME}" ]]; then
+  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hostname./
+  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hosts
+  hostname "${HOSTNAME}"
+  echo "Hostname will be changed on next reboot: ${HOSTNAME}"
+fi
+
+
+echo "# ------------------------------------------------------------------------------"
+echo "Updating APT packages list..."
+echo "# ------------------------------------------------------------------------------"
+apt-get clean
+rm -rf /var/lib/apt/lists/*
+apt-get clean
+apt --fix-broken install -y
+apt-get update 
+apt-get upgrade
+apt-get install software-properties-common
+apt-get update
+
+echo "# ------------------------------------------------------------------------------"
+echo "Ensure all requirements are installed..."
+echo "# ------------------------------------------------------------------------------"
+apt-get install -y "${REQUIREMENTS[@]}"
  
 
 # Set model list, begin ------------
@@ -163,7 +163,9 @@ echo "# ------------------------------------------------------------------------
 echo "Installing Hass.io..."
 echo "# ------------------------------------------------------------------------------"
 wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+
 dpkg -i homeassistant-supervised.deb
+
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
 
 
