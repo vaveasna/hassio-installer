@@ -80,48 +80,8 @@ echo "# ------------------------------------------------------------------------
 apt-get install -y "${REQUIREMENTS[@]}"
  
 
-# Set model list, begin ------------
-ARCHITECTURE_MODEL_LIST="
-# 1.Architecture
-1:linux_386.tar.gz
-2:linux_aarch64.deb
-3:linux_amd64.tar.gz
-4:linux_arm64.tar.gz
-5:linux_armv5.deb
-6:linux_armv5.tar.gz
-7:linux_armv7.deb
-8:linux_armv7.tar.gz
-9:linux_i386.deb
-10:linux_x86_64.deb
-"
 
-search_architecture() {
-    local search_soc_id="${1}"
-    local ret_count=$(echo "${ARCHITECTURE_MODEL_LIST}" | grep -E "^${search_soc_id}:" | wc -l)
-    if [ "${ret_count}" -eq "1" ]; then
-        echo "${ARCHITECTURE_MODEL_LIST}" | grep -E "^${search_soc_id}:" | sed -e 's/NA//g' -e 's/NULL//g' -e 's/[ ][ ]*//g'
-    fi
-}
-
-# Display the ARCHITECTURE list
-printf "%-s\n" "--------------------------------------------------------------------------------------"
-printf "%-5s %-10s \n" ID   ARCHITECTURE
-printf "%-s\n" "--------------------------------------------------------------------------------------"
-printf "%-5s %-10s \n" $(echo "${ARCHITECTURE_MODEL_LIST}" | grep -E "^[0-9]{1,9}:" | sed -e 's/[ ][ ]*/-/g' | awk -F ':' '{print $1,$3,$2,$4}')
-printf "%-s\n" "--------------------------------------------------------------------------------------"
-
-
- 
-
-read -p "Please Input ID: " boxtype
-
-ret=$(search_architecture "${boxtype}")
-if [ "${ret}" == "" ]; then
-    echo "Input error, exit!"
-    exit 1
-fi
-
-ARCHITECTURE=$(echo "${ret}" | awk -F ':' '{print $2}')
+ARCHITECTURE="linux_arm64.tar.gz"
 
 # Set model ARCHITECTURE, end ------------
 
