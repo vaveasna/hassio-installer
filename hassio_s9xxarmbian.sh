@@ -38,22 +38,6 @@ os_agent_version="1.2.2"
 # ==============================================================================
 # SCRIPT LOGIC
 # ==============================================================================
-sudo apt update && sudo apt upgrade
-
-sudo apt install gcc-8-base
-
-rm -f etc/apt/sources.list
-
-cat >etc/apt/sources.list <<EOF
-deb http://deb.debian.org/debian bullseye main contrib non-free
-deb http://deb.debian.org/debian bullseye-updates main contrib non-free
-deb http://security.debian.org/debian-security bullseye-security main
-deb http://ftp.debian.org/debian bullseye-backports main contrib non-free
-EOF
-
-sudo apt update
-
-sudo apt full-upgrade
 
 
 # ==============================================================================
