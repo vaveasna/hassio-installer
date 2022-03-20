@@ -55,7 +55,7 @@ fi
 # ------------------------------------------------------------------------------
 old_hostname=$(< /etc/hostname)
 if [[ "${old_hostname}" != "${HOSTNAME}" ]]; then
-  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hostname./
+  sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hostname
   sed -i "s/${old_hostname}/${HOSTNAME}/g" /etc/hosts
   hostname "${HOSTNAME}"
   echo "Hostname will be changed on next reboot: ${HOSTNAME}"
