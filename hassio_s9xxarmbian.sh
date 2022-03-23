@@ -33,7 +33,7 @@ readonly REQUIREMENTS=(
 )
 
 os_agent_version="1.2.2"
-
+ARCHITECTURE="linux_aarch64.deb"
 
 # ==============================================================================
 # SCRIPT LOGIC
@@ -80,11 +80,6 @@ echo "# ------------------------------------------------------------------------
 apt-get install -y "${REQUIREMENTS[@]}"
  
 
-
-ARCHITECTURE="linux_arm64.tar.gz"
-
-# Set model ARCHITECTURE, end ------------
-
 # ------------------------------------------------------------------------------
 # Installs the os-agent 
 # ------------------------------------------------------------------------------
@@ -92,7 +87,7 @@ ARCHITECTURE="linux_arm64.tar.gz"
 echo "# ------------------------------------------------------------------------------"
 echo "Installing os-agent ${ARCHITECTURE}  V:${os_agent_version}..."
 echo "# ------------------------------------------------------------------------------"
-exit 1
+
 wget -c https://github.com/home-assistant/os-agent/releases/download/${os_agent_version}/os-agent_${os_agent_version}_${ARCHITECTURE}
 
 echo "# ------------------------------------------------------------------------------"
