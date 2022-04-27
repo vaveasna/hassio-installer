@@ -70,7 +70,7 @@ rm -rf /var/lib/apt/lists/*
 apt-get clean
 apt --fix-broken install -y
 apt-get update 
-apt-get upgrade
+apt-get upgrade -y
 apt-get install -y software-properties-common
 apt-get update
 
