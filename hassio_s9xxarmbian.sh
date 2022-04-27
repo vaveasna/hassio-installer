@@ -71,7 +71,7 @@ apt-get clean
 apt --fix-broken install -y
 apt-get update 
 apt-get upgrade
-apt-get install software-properties-common
+apt-get install -y software-properties-common
 apt-get update
 
 echo "# ------------------------------------------------------------------------------"
