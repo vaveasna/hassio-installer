@@ -32,7 +32,7 @@ readonly REQUIREMENTS=(
   wget
 )
 
-os_agent_version="1.2.2"
+os_agent_version="1.4.1"
 ARCHITECTURE="linux_aarch64.deb"
 
 # ==============================================================================
