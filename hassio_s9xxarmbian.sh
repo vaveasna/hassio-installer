@@ -16,7 +16,7 @@ set -o pipefail # Return exit status of the last command in the pipe that failed
 ## ==============================================================================
 ## GLOBALS
 ## ==============================================================================
-readonly HOSTNAME="TV4YOU"
+readonly HOSTNAME="Hass"
 readonly REQUIREMENTS=(
   apparmor-utils
   apt-transport-https
@@ -30,9 +30,16 @@ readonly REQUIREMENTS=(
   software-properties-common
   udisks2 
   wget
+  python3 
+  python3-dev 
+  python3-pip 
+  python3-venv
+  libglib2.0-bin
+  systemd-journal-remote
+  systemd-resolved
 )
 
-os_agent_version="1.4.1"
+os_agent_version="1.6.0"
 ARCHITECTURE="linux_aarch64.deb"
 
 # ==============================================================================
@@ -110,6 +117,7 @@ echo "Installing Docker..."
 echo "# ------------------------------------------------------------------------------"
 curl -fsSL https://get.docker.com | sh
 
+docker pull ghcr.io/home-assistant/aarch64-hassio-supervisor:2025.01.0
 
 # ------------------------------------------------------------------------------
 # Installs and starts Hass.io
@@ -117,7 +125,7 @@ curl -fsSL https://get.docker.com | sh
 echo "# ------------------------------------------------------------------------------"
 echo "Installing Hass.io..."
 echo "# ------------------------------------------------------------------------------"
-wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+wget https://github.com/Travis90x/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 
 dpkg -i homeassistant-supervised.deb
 
@@ -132,7 +140,7 @@ echo "This process may take up to 20 minutes. Please visit:"
 echo "http://${HOSTNAME}.local:8123/ in your browser and wait"
 echo "for Home Assistant to load."
 echo "If the previous URL does not work, please try http://${ip_addr}:8123/"
-journalctl -f
+
 
 
 
