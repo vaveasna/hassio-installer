@@ -115,7 +115,7 @@ dpkg -i os-agent_${os_agent_version}_${ARCHITECTURE}
 echo "# ------------------------------------------------------------------------------"
 echo "Installing Docker..."
 echo "# ------------------------------------------------------------------------------"
-curl -fsSL https://get.docker.com | sh
+curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh ./get-docker.sh && rm get-docker.sh
 
 docker pull ghcr.io/home-assistant/aarch64-hassio-supervisor:2025.01.0
 
