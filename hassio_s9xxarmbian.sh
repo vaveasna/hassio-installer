@@ -51,7 +51,7 @@ readonly REQUIREMENTS=(
   libatlas-base-dev
 )
 
-os_agent_version="1.6.0"
+os_agent_version="1.7.2"
 ARCHITECTURE="linux_aarch64.deb"
 
 # ==============================================================================
@@ -136,7 +136,7 @@ curl -fsSL https://get.docker.com | sh
 echo "# ------------------------------------------------------------------------------"
 echo "Installing Hass.io..."
 echo "# ------------------------------------------------------------------------------"
-wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+wget https://github.com/Travis90x/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 
 dpkg -i homeassistant-supervised.deb
 
